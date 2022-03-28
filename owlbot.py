@@ -63,6 +63,9 @@ s.move(templated_files, excludes=[".coveragerc"]) # the microgenerator has a goo
 
 python.py_samples(skip_readmes=True)
 
+# NOTE: Remove after https://github.com/googleapis/synthtool/issues/1375 is resolved
+s.replace("noxfile.py", 'black==19\.10b0', 'black==22.3.0')
+
 # ----------------------------------------------------------------------------
 # Run blacken session
 # ----------------------------------------------------------------------------
