@@ -1,18 +1,31 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # [START cloudoptimization_sync_api]
 
-from google.cloud.optimization_v1.services.fleet_routing.client import FleetRoutingClient
-from google.cloud.optimization_v1.types.fleet_routing import OptimizeToursRequest
+from google.cloud import optimization_v1
 
 
 def call_sync_api(request_file_name):
   """Call the sync api for fleet routing."""
   # Use the default credentials for the environment.
-  fleet_routing_client = FleetRoutingClient()
+  fleet_routing_client = optimization_v1.FleetRoutingClient()
 
   with open(request_file_name, 'r') as f:
     # The request must include the `parent` field with the value set to
     # 'projects/{YOUR_GCP_PROJECT_ID}'.
-    fleet_routing_request = OptimizeToursRequest.from_json(f.read())
+    fleet_routing_request = optimization_v1.OptimizeToursRequest.from_json(f.read())
     # Send the request and print the response.
     # Fleet Routing will return a response by the earliest of the `timeout`
     # field in the request payload and the gRPC timeout specified below.
