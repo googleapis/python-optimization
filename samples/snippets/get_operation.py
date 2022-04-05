@@ -16,7 +16,7 @@
 from google.cloud import optimization_v1
 
 def get_operation(operation_full_id):
-    """Get operation status."""
+    """Get operation details and status."""
     # TODO(developer): Uncomment and set the following variables
     # operation_full_id = \
     #     "projects/[projectId]/locations/us-central1/operations/[operationId]"
