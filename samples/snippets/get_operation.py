@@ -15,7 +15,8 @@
 # [START cloudoptimization_get_operation]
 from google.cloud import optimization_v1
 
-def get_operation(operation_full_id):
+
+def get_operation(operation_full_id: str) -> None:
     """Get operation details and status."""
     # TODO(developer): Uncomment and set the following variables
     # operation_full_id = \
