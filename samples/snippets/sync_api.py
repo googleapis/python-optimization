@@ -20,7 +20,7 @@ from google.cloud import optimization_v1
 # project_id= 'YOUR_PROJECT_ID'
 
 
-def call_sync_api(project_id=str):
+def call_sync_api(project_id: str) -> None:
     """Call the sync api for fleet routing."""
     # Use the default credentials for the environment.
     # Change the file name to your request file.

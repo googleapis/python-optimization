@@ -13,10 +13,12 @@
 # limitations under the License.
 
 import google.auth
+import pytest
+
 from samples.snippets import sync_api
 
 
-def test_call_sync_api(capsys):
+def test_call_sync_api(capsys: pytest.LogCaptureFixture) -> None:
     _, project_id = google.auth.default()
     sync_api.call_sync_api(project_id)
     out, _ = capsys.readouterr()
