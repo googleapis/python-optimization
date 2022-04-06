@@ -36,7 +36,7 @@ def operation_id():
     yield operation.name
 
 
-def test_get_operation_status(capsys: pytest.LogCaptureFixture, operation_id: str):
+def test_get_operation_status(capsys: pytest.LogCaptureFixture, operation_id):
     get_operation.get_operation(operation_id)
     out, _ = capsys.readouterr()
     assert "Operation details" in out
