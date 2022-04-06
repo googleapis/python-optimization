@@ -14,7 +14,6 @@
 
 import os
 
-import google.auth
 from google.cloud import optimization_v1
 import pytest
 
@@ -23,17 +22,21 @@ import get_operation
 
 @pytest.fixture(scope="function")
 def operation_id():
-    _, project_id = google.auth.default()
-
     client = optimization_v1.FleetRoutingClient()
-    project_location = f"projects/{project_id}/locations/us-central1"
+    
+    model_configs = optimization_v1.AsyncModelConfig()
+    model_configs.input_config.gcs_source.uri = "uri_value"
+    model_configs.output_config.gcs_destination.uri = "uri_value"
 
-    generator = client._transport.operations_client.list_operations(
-        project_location, filter_=""
-    ).pages
-    page = next(generator)
-    operation = next(page)
-    yield operation.name
+    request = optimization_v1.BatchOptimizeToursRequest(
+        parent="parent_value",
+        model_configs=model_configs,
+    )
+
+    # Make the request
+    operation = client.batch_optimize_tours(request=request)
+
+    yield operation.operation.name
 
 
 def test_get_operation_status(capsys: pytest.LogCaptureFixture, operation_id):
