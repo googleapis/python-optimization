@@ -30,7 +30,7 @@ def call_sync_api():
     # The request must include the `parent` field with the value set to
     # 'projects/{YOUR_GCP_PROJECT_ID}'.
     fleet_routing_request = optimization_v1.OptimizeToursRequest.from_json(f.read())
-    fleet_routing_request.parent = "projects/{your_project_id}".format(your_project_id = project_id)
+    fleet_routing_request.parent = f"projects/{project_id}"
     # Send the request and print the response.
     # Fleet Routing will return a response by the earliest of the `timeout`
     # field in the request payload and the gRPC timeout specified below.
