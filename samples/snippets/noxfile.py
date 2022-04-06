@@ -29,7 +29,7 @@ import nox
 # WARNING - WARNING - WARNING - WARNING - WARNING
 # WARNING - WARNING - WARNING - WARNING - WARNING
 
-BLACK_VERSION = "black==19.10b0"
+BLACK_VERSION = "black==22.3.0"
 
 # Copy `noxfile_config.py` to your directory and modify it instead.
 
@@ -110,6 +110,7 @@ nox.options.error_on_missing_interpreters = True
 
 def _determine_local_import_names(start_dir: str) -> List[str]:
     """Determines all import names that should be considered "local".
+
     This is used when running the linter to insure that import order is
     properly checked.
     """
