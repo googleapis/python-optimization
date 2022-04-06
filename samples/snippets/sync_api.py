@@ -14,14 +14,14 @@
 
 # [START cloudoptimization_sync_api]
 
-import google.auth
 from google.cloud import optimization_v1
 
+# TODO(developer): Uncomment these variables before running the sample.
+# project_id= 'YOUR_PROJECT_ID'
 
-def call_sync_api():
+def call_sync_api(project_id):
   """Call the sync api for fleet routing."""
   # Use the default credentials for the environment.
-  _, project_id = google.auth.default()
   # Change the file name to your request file.
   request_file_name = "resources/sync_request.json"
   fleet_routing_client = optimization_v1.FleetRoutingClient()
