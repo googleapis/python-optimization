@@ -75,7 +75,6 @@ nox.options.error_on_missing_interpreters = True
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def lint(session):
     """Run linters.
-    
     Returns a failure if the linters find linting errors or sufficiently
     serious code quality issues.
     """
