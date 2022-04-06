@@ -67,4 +67,6 @@ python.py_samples(skip_readmes=True)
 # Run blacken session
 # ----------------------------------------------------------------------------
 
-s.shell.run(["nox", "-s", "blacken"], hide_output=False)
+# run blacken session for all directories which have a noxfile
+for noxfile in Path(".").glob("**/noxfile.py"):
+    s.shell.run(["nox", "-s", "blacken"], cwd=noxfile.parent, hide_output=False)
