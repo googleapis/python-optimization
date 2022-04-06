@@ -17,10 +17,10 @@ from samples.snippets import sync_api
 
 
 def test_call_sync_api(capsys):
-  _, project_id = google.auth.default()
-  sync_api.call_sync_api(project_id)
-  out, _ = capsys.readouterr()
+    _, project_id = google.auth.default()
+    sync_api.call_sync_api(project_id)
+    out, _ = capsys.readouterr()
 
-  expected_strings = ["routes", "visits", "transitions", "metrics"]
-  for expected_string in expected_strings:
-    assert expected_string in out
+    expected_strings = ["routes", "visits", "transitions", "metrics"]
+    for expected_string in expected_strings:
+        assert expected_string in out
