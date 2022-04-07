@@ -13,7 +13,6 @@
 # limitations under the License.
 
 
-import string
 from google.cloud import optimization_v1
 import pytest
 
@@ -24,13 +23,13 @@ import get_operation
 def operation_id() -> str:
     client = optimization_v1.FleetRoutingClient()
 
-    model_configs = optimization_v1.types.BatchOptimizeToursRequest.AsyncModelConfig()
-    model_configs.input_config.gcs_source.uri = "uri_value"
-    model_configs.output_config.gcs_destination.uri = "uri_value"
+    model_config = optimization_v1.types.BatchOptimizeToursRequest.AsyncModelConfig()
+    model_config.input_config.gcs_source.uri = "uri_value"
+    model_config.output_config.gcs_destination.uri = "uri_value"
 
     request = optimization_v1.BatchOptimizeToursRequest(
         parent="parent_value",
-        model_configs=model_configs,
+        model_configs=[model_config],
     )
 
     # Make the request
