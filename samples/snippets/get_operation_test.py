@@ -25,11 +25,7 @@ def operation_id() -> str:
     fleet_routing_client = optimization_v1.FleetRoutingClient()
 
     _, project_id = google.auth.default()
-    model_config = optimization_v1.types.BatchOptimizeToursRequest.AsyncModelConfig()
-    model_config.input_config.gcs_source.uri = "uri_value"
-    model_config.output_config.gcs_destination.uri = "uri_value"
-
-    fleet_routing_request = {"parent": f"projects/{project_id}", "model_configs": [model_config]}
+    fleet_routing_request = {"parent": f"projects/{project_id}"}
 
     # Make the request
     operation = fleet_routing_client.batch_optimize_tours(fleet_routing_request)
