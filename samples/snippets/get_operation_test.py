@@ -13,6 +13,7 @@
 # limitations under the License.
 
 
+import google.auth
 from google.cloud import optimization_v1
 import pytest
 
@@ -21,16 +22,17 @@ import get_operation
 
 @pytest.fixture(scope="function")
 def operation_id() -> str:
-    client = optimization_v1.FleetRoutingClient()
+    fleet_routing_client = optimization_v1.FleetRoutingClient()
 
+    _, project_id = google.auth.default()
     model_config = optimization_v1.types.BatchOptimizeToursRequest.AsyncModelConfig()
     model_config.input_config.gcs_source.uri = "uri_value"
     model_config.output_config.gcs_destination.uri = "uri_value"
 
-    request = {"parent": "parent_value", "model_configs": [model_config]}
+    fleet_routing_request = {"parent": f"projects/{project_id}", "model_configs": [model_config]}
 
     # Make the request
-    operation = client.batch_optimize_tours(request=request)
+    operation = fleet_routing_client.batch_optimize_tours(fleet_routing_request)
 
     yield operation.operation.name
 
