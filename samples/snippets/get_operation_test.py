@@ -27,10 +27,7 @@ def operation_id() -> str:
     model_config.input_config.gcs_source.uri = "uri_value"
     model_config.output_config.gcs_destination.uri = "uri_value"
 
-    request = optimization_v1.BatchOptimizeToursRequest(
-        parent="parent_value",
-        model_configs=[model_config],
-    )
+    request = {"parent": "parent_value", "model_configs": [model_config]}
 
     # Make the request
     operation = client.batch_optimize_tours(request=request)
