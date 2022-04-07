@@ -14,9 +14,7 @@
 
 # [START cloudoptimization_async_api]
 
-import json
-import sys
-
+from google.api_core.exceptions import GoogleAPICallError
 from google.cloud import optimization_v1
 
 # TODO(developer): Uncomment these variables before running the sample.
@@ -50,7 +48,7 @@ def call_async_api(project_id: str, request_model_gcs_path: str, model_solution_
             result = operation.result()
             print(result)
             # Do you stuff.
-        except:
+        except GoogleAPICallError:
             print(operation.operation.error)
 
 

@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import google.auth
-import pytest
 import uuid
 
-from samples.snippets import async_api
+import google.auth
+import pytest
+
 from google.cloud import storage
+from samples.snippets import async_api
 
 
 # TODO(developer): Replace the variables in the file before use.
@@ -30,7 +31,7 @@ BATCH_OUTPUT_URI_PREFIX = "gs://{}/{}/".format(BUCKET, OUTPUT_PREFIX)
 
 
 @pytest.fixture(autouse=True)
-def setup_teardown():
+def setup_teardown()->None:
     """Create a temporary bucket to store optimization output."""
     storage_client = storage.Client()
     bucket = storage_client.create_bucket(BUCKET)
