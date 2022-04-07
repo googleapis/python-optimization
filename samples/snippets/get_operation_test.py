@@ -24,7 +24,7 @@ import get_operation
 def operation_id() -> str:
     client = optimization_v1.FleetRoutingClient()
 
-    model_configs = optimization_v1.AsyncModelConfig()
+    model_configs = optimization_v1.types.BatchOptimizeToursRequest.AsyncModelConfig()
     model_configs.input_config.gcs_source.uri = "uri_value"
     model_configs.output_config.gcs_destination.uri = "uri_value"
 
