@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 
+import string
 from google.cloud import optimization_v1
 import pytest
 
@@ -21,9 +21,9 @@ import get_operation
 
 
 @pytest.fixture(scope="function")
-def operation_id():
+def operation_id() -> str:
     client = optimization_v1.FleetRoutingClient()
-    
+
     model_configs = optimization_v1.AsyncModelConfig()
     model_configs.input_config.gcs_source.uri = "uri_value"
     model_configs.output_config.gcs_destination.uri = "uri_value"
@@ -39,7 +39,7 @@ def operation_id():
     yield operation.operation.name
 
 
-def test_get_operation_status(capsys: pytest.LogCaptureFixture, operation_id):
+def test_get_operation_status(capsys: pytest.LogCaptureFixture, operation_id: str) -> None:
     get_operation.get_operation(operation_id)
     out, _ = capsys.readouterr()
     assert "Operation details" in out
