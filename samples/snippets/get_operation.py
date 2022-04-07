@@ -19,6 +19,7 @@ from google.cloud import optimization_v1
 # operation_full_id = \
 #     "projects/[projectId]/locations/operations/[operationId]"
 
+
 def get_operation(operation_full_id: str) -> None:
     """Get operation details and status."""
 
