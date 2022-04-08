@@ -46,4 +46,4 @@ def test_call_async_api(capsys: pytest.LogCaptureFixture) -> None:
     async_api.call_async_api(project_id, INPUT_URI, BATCH_OUTPUT_URI_PREFIX)
     out, _ = capsys.readouterr()
 
-    assert "type_url" in out
+    assert "operations" in out
