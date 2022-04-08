@@ -25,7 +25,7 @@ def get_operation(operation_full_id: str) -> None:
 
     client = optimization_v1.FleetRoutingClient()
     # Get the latest state of a long-running operation.
-    response = client._transport.operations_client.get_operation(operation_full_id)
+    response = client.transport.operations_client.get_operation(operation_full_id)
 
     print("Name: {}".format(response.name))
     print("Operation details:")
