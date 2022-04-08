@@ -15,13 +15,12 @@
 # [START cloudoptimization_get_operation]
 from google.cloud import optimization_v1
 
-# TODO(developer): Uncomment and set the following variables
-# operation_full_id = \
-#     "projects/[projectId]/locations/operations/[operationId]"
-
 
 def get_operation(operation_full_id: str) -> None:
     """Get operation details and status."""
+    # TODO(developer): Uncomment and set the following variables
+    # operation_full_id = \
+    #     "projects/[projectId]/locations/operations/[operationId]"
 
     client = optimization_v1.FleetRoutingClient()
     # Get the latest state of a long-running operation.
