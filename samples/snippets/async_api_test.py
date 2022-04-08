@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from collections.abc import Iterator
 import uuid
 
 import google.auth
@@ -31,7 +30,7 @@ BATCH_OUTPUT_URI_PREFIX = "gs://{}/{}/".format(BUCKET, OUTPUT_PREFIX)
 
 
 @pytest.fixture(autouse=True)
-def setup_teardown() -> Iterator[google.cloud.storage.bucket.Bucket]:
+def setup_teardown():
     """Create a temporary bucket to store optimization output."""
     storage_client = storage.Client()
     bucket = storage_client.create_bucket(BUCKET)
