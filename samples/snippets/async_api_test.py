@@ -30,7 +30,7 @@ BATCH_OUTPUT_URI_PREFIX = "gs://{}/{}/".format(BUCKET, OUTPUT_PREFIX)
 
 
 @pytest.fixture(autouse=True)
-def setup_teardown():
+def setup_teardown() -> None:
     """Create a temporary bucket to store optimization output."""
     storage_client = storage.Client()
     bucket = storage_client.create_bucket(BUCKET)
