@@ -14,8 +14,6 @@
 
 # [START cloudoptimization_long_timeout]
 
-import sys
-
 from google.cloud import optimization_v1
 from google.cloud.optimization_v1.services import fleet_routing
 from google.cloud.optimization_v1.services.fleet_routing import transports
