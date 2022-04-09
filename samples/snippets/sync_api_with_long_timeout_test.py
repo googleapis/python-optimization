@@ -15,13 +15,13 @@
 import google.auth
 import pytest
 
-from samples.snippets import sync_api
+from samples.snippets import sync_api_with_long_timeout
 
 
 def test_long_timeout(capsys: pytest.LogCaptureFixture) -> None:
     request_file_name = "resources/sync_request.json"
     _, project_id = google.auth.default()
-    sync_api.call_sync_api(request_file_name, project_id)
+    sync_api_with_long_timeout.long_timeout(request_file_name, project_id)
     out, _ = capsys.readouterr()
 
     expected_strings = ["routes", "visits", "transitions", "metrics"]
