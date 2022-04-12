@@ -20,7 +20,7 @@ def get_operation(operation_full_id: str) -> None:
     """Get operation details and status."""
     # TODO(developer): Uncomment and set the following variables
     # operation_full_id = \
-    #     "projects/[projectId]/locations/operations/[operationId]"
+    #     "projects/[projectId]/operations/[operationId]"
 
     client = optimization_v1.FleetRoutingClient()
     # Get the latest state of a long-running operation.
@@ -29,4 +29,6 @@ def get_operation(operation_full_id: str) -> None:
     print("Name: {}".format(response.name))
     print("Operation details:")
     print(response)
+
+
 # [END cloudoptimization_get_operation]
