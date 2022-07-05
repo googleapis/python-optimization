@@ -1214,7 +1214,6 @@ def test_fleet_routing_transport_auth_adc(transport_class):
     [
         transports.FleetRoutingGrpcTransport,
         transports.FleetRoutingGrpcAsyncIOTransport,
-        transports.FleetRoutingRestTransport,
     ],
 )
 def test_fleet_routing_transport_auth_gdch_credentials(transport_class):
