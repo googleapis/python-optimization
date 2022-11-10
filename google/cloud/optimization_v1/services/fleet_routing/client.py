@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -57,7 +68,7 @@ class FleetRoutingClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[FleetRoutingTransport]:
         """Returns an appropriate transport class.
 
@@ -333,7 +344,7 @@ class FleetRoutingClient(metaclass=FleetRoutingClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, FleetRoutingTransport, None] = None,
+        transport: Optional[Union[str, FleetRoutingTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -431,10 +442,10 @@ class FleetRoutingClient(metaclass=FleetRoutingClientMeta):
 
     def optimize_tours(
         self,
-        request: Union[fleet_routing.OptimizeToursRequest, dict] = None,
+        request: Optional[Union[fleet_routing.OptimizeToursRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> fleet_routing.OptimizeToursResponse:
         r"""Sends an ``OptimizeToursRequest`` containing a ``ShipmentModel``
@@ -531,10 +542,10 @@ class FleetRoutingClient(metaclass=FleetRoutingClientMeta):
 
     def batch_optimize_tours(
         self,
-        request: Union[fleet_routing.BatchOptimizeToursRequest, dict] = None,
+        request: Optional[Union[fleet_routing.BatchOptimizeToursRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Optimizes vehicle tours for one or more ``OptimizeToursRequest``

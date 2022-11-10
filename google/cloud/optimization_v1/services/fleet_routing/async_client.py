@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -177,9 +187,9 @@ class FleetRoutingAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, FleetRoutingTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the fleet routing client.
@@ -223,10 +233,10 @@ class FleetRoutingAsyncClient:
 
     async def optimize_tours(
         self,
-        request: Union[fleet_routing.OptimizeToursRequest, dict] = None,
+        request: Optional[Union[fleet_routing.OptimizeToursRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> fleet_routing.OptimizeToursResponse:
         r"""Sends an ``OptimizeToursRequest`` containing a ``ShipmentModel``
@@ -273,7 +283,7 @@ class FleetRoutingAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.optimization_v1.types.OptimizeToursRequest, dict]):
+            request (Optional[Union[google.cloud.optimization_v1.types.OptimizeToursRequest, dict]]):
                 The request object. Request to be given to a tour
                 optimization solver which defines the shipment model to
                 solve as well as optimization parameters.
@@ -331,10 +341,10 @@ class FleetRoutingAsyncClient:
 
     async def batch_optimize_tours(
         self,
-        request: Union[fleet_routing.BatchOptimizeToursRequest, dict] = None,
+        request: Optional[Union[fleet_routing.BatchOptimizeToursRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Optimizes vehicle tours for one or more ``OptimizeToursRequest``
@@ -385,7 +395,7 @@ class FleetRoutingAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.optimization_v1.types.BatchOptimizeToursRequest, dict]):
+            request (Optional[Union[google.cloud.optimization_v1.types.BatchOptimizeToursRequest, dict]]):
                 The request object. Request to batch optimize tours as
                 an asynchronous operation. Each input file should
                 contain one `OptimizeToursRequest`, and each output file
