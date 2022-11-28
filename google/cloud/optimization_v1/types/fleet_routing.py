@@ -1840,10 +1840,10 @@ class Vehicle(proto.Message):
                 along this vehicle's route, the following cost penalty
                 applies (only once per vehicle): (load -
                 [soft_max_load][google.cloud.optimization.v1.Vehicle.LoadLimit.soft_max_load])
-                \*
-                [cost_per_unit_above_soft_max][google.cloud.optimization.v1.Vehicle.LoadLimit.cost_per_unit_above_soft_max].
-                All costs add up and must be in the same unit as
-                [Shipment.penalty_cost][google.cloud.optimization.v1.Shipment.penalty_cost].
+
+                -  [cost_per_unit_above_soft_max][google.cloud.optimization.v1.Vehicle.LoadLimit.cost_per_unit_above_soft_max].
+                   All costs add up and must be in the same unit as
+                   [Shipment.penalty_cost][google.cloud.optimization.v1.Shipment.penalty_cost].
             start_load_interval (google.cloud.optimization_v1.types.Vehicle.LoadLimit.Interval):
                 The acceptable load interval of the vehicle
                 at the start of the route.
@@ -3445,10 +3445,9 @@ class AggregatedMetrics(proto.Message):
             Total visit duration for a route or a
             solution.
         total_duration (google.protobuf.duration_pb2.Duration):
-            The total duration should be equal to the sum of all
-            durations above. For routes, it also corresponds to
-            [ShipmentRoute.vehicle_end_time][google.cloud.optimization.v1.ShipmentRoute.vehicle_end_time]
-            -
+            The total duration should be equal to the sum of all durations above. For routes, it also corresponds to [ShipmentRoute.vehicle_end_time][google.cloud.optimization.v1.ShipmentRoute.vehicle_end_time]
+            ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
             [ShipmentRoute.vehicle_start_time][google.cloud.optimization.v1.ShipmentRoute.vehicle_start_time].
         travel_distance_meters (float):
             Total travel distance for a route or a
