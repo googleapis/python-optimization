@@ -3446,7 +3446,6 @@ class AggregatedMetrics(proto.Message):
             solution.
         total_duration (google.protobuf.duration_pb2.Duration):
             The total duration should be equal to the sum of all durations above. For routes, it also corresponds to [ShipmentRoute.vehicle_end_time][google.cloud.optimization.v1.ShipmentRoute.vehicle_end_time]
-            ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             [ShipmentRoute.vehicle_start_time][google.cloud.optimization.v1.ShipmentRoute.vehicle_start_time].
         travel_distance_meters (float):
