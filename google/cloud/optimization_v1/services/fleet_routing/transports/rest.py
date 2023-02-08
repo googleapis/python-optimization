@@ -90,7 +90,12 @@ class FleetRoutingRestInterceptor:
 
 
     """
-    def pre_batch_optimize_tours(self, request: fleet_routing.BatchOptimizeToursRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[fleet_routing.BatchOptimizeToursRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_optimize_tours(
+        self,
+        request: fleet_routing.BatchOptimizeToursRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[fleet_routing.BatchOptimizeToursRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_optimize_tours
 
         Override in a subclass to manipulate the request or metadata
@@ -98,7 +103,9 @@ class FleetRoutingRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_optimize_tours(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_batch_optimize_tours(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for batch_optimize_tours
 
         Override in a subclass to manipulate the response
@@ -106,7 +113,12 @@ class FleetRoutingRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_optimize_tours(self, request: fleet_routing.OptimizeToursRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[fleet_routing.OptimizeToursRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_optimize_tours(
+        self,
+        request: fleet_routing.OptimizeToursRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[fleet_routing.OptimizeToursRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for optimize_tours
 
         Override in a subclass to manipulate the request or metadata
@@ -114,7 +126,9 @@ class FleetRoutingRestInterceptor:
         """
         return request, metadata
 
-    def post_optimize_tours(self, response: fleet_routing.OptimizeToursResponse) -> fleet_routing.OptimizeToursResponse:
+    def post_optimize_tours(
+        self, response: fleet_routing.OptimizeToursResponse
+    ) -> fleet_routing.OptimizeToursResponse:
         """Post-rpc interceptor for optimize_tours
 
         Override in a subclass to manipulate the response
@@ -123,7 +137,11 @@ class FleetRoutingRestInterceptor:
         """
         return response
 
-    def pre_get_operation(self, request: operations_pb2.GetOperationRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.Operation:
+    def pre_get_operation(
+        self,
+        request: operations_pb2.GetOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.Operation:
         """Pre-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -131,7 +149,9 @@ class FleetRoutingRestInterceptor:
         """
         return request, metadata
 
-    def post_get_operation(self, response: operations_pb2.GetOperationRequest) -> operations_pb2.Operation:
+    def post_get_operation(
+        self, response: operations_pb2.GetOperationRequest
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the response
@@ -183,20 +203,21 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'cloudoptimization.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[FleetRoutingRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "cloudoptimization.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[FleetRoutingRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -235,7 +256,9 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -246,10 +269,11 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -266,27 +290,30 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
             http_options: Dict[str, List[Dict[str, str]]] = {
-                'google.longrunning.Operations.GetOperation': [
+                "google.longrunning.Operations.GetOperation": [
                     {
-                        'method': 'get',
-                        'uri': '/v1/{name=projects/*/operations/*}',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/operations/*}",
                     },
                     {
-                        'method': 'get',
-                        'uri': '/v1/{name=projects/*/locations/*/operations/*}',
+                        "method": "get",
+                        "uri": "/v1/{name=projects/*/locations/*/operations/*}",
                     },
                 ],
             }
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -295,19 +322,24 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
         def __hash__(self):
             return hash("BatchOptimizeTours")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: fleet_routing.BatchOptimizeToursRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: fleet_routing.BatchOptimizeToursRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the batch optimize tours method over HTTP.
 
             Args:
@@ -334,51 +366,56 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}:batchOptimizeTours',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}:batchOptimizeTours',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}:batchOptimizeTours",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}:batchOptimizeTours",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_optimize_tours(request, metadata)
+            request, metadata = self._interceptor.pre_batch_optimize_tours(
+                request, metadata
+            )
             pb_request = fleet_routing.BatchOptimizeToursRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -395,19 +432,24 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
         def __hash__(self):
             return hash("OptimizeTours")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: fleet_routing.OptimizeToursRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> fleet_routing.OptimizeToursResponse:
+        def __call__(
+            self,
+            request: fleet_routing.OptimizeToursRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> fleet_routing.OptimizeToursResponse:
             r"""Call the optimize tours method over HTTP.
 
             Args:
@@ -433,16 +475,17 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}:optimizeTours',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}:optimizeTours',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}:optimizeTours",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}:optimizeTours",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_optimize_tours(request, metadata)
             pb_request = fleet_routing.OptimizeToursRequest.pb(request)
@@ -451,33 +494,35 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -493,32 +538,36 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
             return resp
 
     @property
-    def batch_optimize_tours(self) -> Callable[
-            [fleet_routing.BatchOptimizeToursRequest],
-            operations_pb2.Operation]:
+    def batch_optimize_tours(
+        self,
+    ) -> Callable[[fleet_routing.BatchOptimizeToursRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchOptimizeTours(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchOptimizeTours(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def optimize_tours(self) -> Callable[
-            [fleet_routing.OptimizeToursRequest],
-            fleet_routing.OptimizeToursResponse]:
+    def optimize_tours(
+        self,
+    ) -> Callable[
+        [fleet_routing.OptimizeToursRequest], fleet_routing.OptimizeToursResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._OptimizeTours(self._session, self._host, self._interceptor) # type: ignore
+        return self._OptimizeTours(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def get_operation(self):
-        return self._GetOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetOperation(FleetRoutingRestStub):
-        def __call__(self,
-            request: operations_pb2.GetOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: operations_pb2.GetOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
 
             r"""Call the get operation method over HTTP.
 
@@ -535,30 +584,30 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
                 operations_pb2.Operation: Response from GetOperation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/operations/*}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/operations/*}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/operations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_operation(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -585,6 +634,4 @@ class FleetRoutingRestTransport(FleetRoutingTransport):
         self._session.close()
 
 
-__all__=(
-    'FleetRoutingRestTransport',
-)
+__all__ = ("FleetRoutingRestTransport",)
